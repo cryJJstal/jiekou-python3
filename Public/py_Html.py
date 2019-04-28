@@ -22,10 +22,21 @@ def title(titles):
      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
+        table {
+            table-layout: fixed;
+        }
+
+        td {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        
         .hidden-detail,.hidden-tr{
             display:none;
         }
     </style>
+	 <script> function info($this){var title=$this.innerText;$($this).attr("title",title);} </script>
 </head>
 <body>
 	'''%(titles)
@@ -64,15 +75,14 @@ shanghai='''<div class="row " style="margin:60px">
         </div>
         <table class="table table-hover table-condensed table-bordered" style="word-wrap:break-word; word-break:break-all;  margin-top: 7px;">
 		<tr >
-            <td ><strong>用例ID&nbsp;</strong></td>
-            <td><strong>用例名字</strong></td>
-            <td><strong>key</strong></td>
-            <td><strong>请求内容</strong></td>
-            <td><strong>url</strong></td>
-            <td><strong>请求方式</strong></td>
-            <td><strong>预期</strong></td>
-            <td><strong>实际返回</strong></td>  
-            <td><strong>结果</strong></td>
+            <td width="60"><strong>用例ID&nbsp;</strong></td>
+            <td width="270"><strong>用例名字</strong></td>
+            <td width="350"><strong>请求内容</strong></td>
+            <td width="330"><strong>url</strong></td>
+            <td width="70"><strong>请求方式</strong></td>
+            <td width="90"><strong>预期</strong></td>
+            <td ><strong>实际返回</strong></td>
+            <td width="70"><strong>结果</strong></td>
         </tr>
     '''
 def passfail(tend):
@@ -85,7 +95,7 @@ def passfail(tend):
     else:
         htl = '<td bgcolor="crimson">exect</td>'
     return htl
-def ceshixiangqing(reslt,id,name,key,coneent,url,meth,yuqi,json,relust):
+def ceshixiangqing(reslt,id,name,coneent,url,meth,yuqi,json,relust):
     xiangqing='''
         <tr class="case-tr %s">
             <td>%s</td>
@@ -94,11 +104,11 @@ def ceshixiangqing(reslt,id,name,key,coneent,url,meth,yuqi,json,relust):
             <td>%s</td>
             <td>%s</td>
             <td>%s</td>
-            <td>%s</td>
-            <td>%s</td>
+			<td onmousemove="info(this)" >%s </td>
+
             %s
         </tr>
-    '''%(reslt,id,name,key,coneent,url,meth,yuqi,json,passfail(relust))
+    '''%(reslt,id,name,coneent,url,meth,yuqi,json,passfail(relust))
     return xiangqing
 weibu='''</div></div></table><script src="https://code.jquery.com/jquery.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -132,7 +142,7 @@ weibu='''</div></div></table><script src="https://code.jquery.com/jquery.js"></s
 	});
 </script>
 </body></html>'''
-def relust(titles,starttime,endtime,passge,fail,id,name,key,coneent,url,meth,yuqi,json,relust,exceptions,weizhi):
+def relust(titles,starttime,endtime,passge,fail,id,name,coneent,url,meth,yuqi,json,relust,exceptions,weizhi):
     if type(name) ==list:
         relus=' '
         for i in range(len(name)):
@@ -144,12 +154,12 @@ def relust(titles,starttime,endtime,passge,fail,id,name,key,coneent,url,meth,yuq
                 clazz = "danger"
             else:
                 clazz='error'
-            relus+=(ceshixiangqing(clazz,id[i],name[i],key[i],coneent[i],url[i],meth[i],yuqi[i],json[i],relust[i]))
+            relus+=(ceshixiangqing(clazz,id[i],name[i],coneent[i],url[i],meth[i],yuqi[i],json[i],relust[i]))
         text=title(titles)+connent+shouye(starttime,endtime,passge,fail,exceptions,weizhi)+shanghai+relus+weibu
     else:
-        text=title(titles)+connent+shouye(starttime,endtime,passge,fail,exceptions,weizhi)+shanghai+ceshixiangqing(id,name,key,coneent,url,meth,yuqi,json,relust)+weibu
+        text=title(titles)+connent+shouye(starttime,endtime,passge,fail,exceptions,weizhi)+shanghai+ceshixiangqing(id,name,coneent,url,meth,yuqi,json,relust)+weibu
     return text
-def createHtml(filepath,titles,starttime,endtime,passge,fail,id,name,key,coneent,url,meth,yuqi,json,relusts,exceptions,weizhi):
-    texts=relust(titles,starttime,endtime,passge,fail,id,name,key,coneent,url,meth,yuqi,json,relusts,exceptions,weizhi)
+def createHtml(filepath,titles,starttime,endtime,passge,fail,id,name,coneent,url,meth,yuqi,json,relusts,exceptions,weizhi):
+    texts=relust(titles,starttime,endtime,passge,fail,id,name,coneent,url,meth,yuqi,json,relusts,exceptions,weizhi)
     with open(filepath,'wb') as f:
         f.write(texts.encode('utf-8'))

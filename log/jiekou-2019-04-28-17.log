@@ -1,0 +1,20 @@
+[2019-04-28 17:31:30.026206] INFO: jiekou: 当前模块 requests封装
+[2019-04-28 17:31:30.026206] INFO: jiekou: 全部args参数参数信息 , ()
+[2019-04-28 17:31:30.041806] INFO: jiekou: 全部kwargs参数信息 , {}
+[2019-04-28 17:31:30.041806] INFO: jiekou: 当前模块 解析测试用例文件
+[2019-04-28 17:31:30.041806] INFO: jiekou: 全部args参数参数信息 , ('D:\\public_interface\\test_case_data\\case.xlsx',)
+[2019-04-28 17:31:30.041806] INFO: jiekou: 全部kwargs参数信息 , {}
+[2019-04-28 17:31:30.057406] INFO: jiekou: 当前模块 解析测试用例文件
+[2019-04-28 17:31:30.057406] INFO: jiekou: 全部args参数参数信息 , ('D:\\public_interface\\test_case_data\\case.xlsx',)
+[2019-04-28 17:31:30.057406] INFO: jiekou: 全部kwargs参数信息 , {}
+[2019-04-28 17:31:30.073006] INFO: jiekou: 当前模块 测试
+[2019-04-28 17:31:30.073006] INFO: jiekou: 全部args参数参数信息 , ()
+[2019-04-28 17:31:30.073006] INFO: jiekou: 全部kwargs参数信息 , {}
+[2019-04-28 17:31:30.104206] INFO: jiekou: inputdata> 参数:{"page":"1","size":"50","token":"72bbdfd0b5bbb527"}, url:/cmsapi/third_anniversary/get_my_convert_list ,返回:{'code': 200, 'result': {'error': -1, 'data': '', 'msg': '未登录'}},预期:code=200
+[2019-04-28 17:31:30.104206] INFO: jiekou: 当前模块 断言测试结果
+[2019-04-28 17:31:30.104206] INFO: jiekou: 全部args参数参数信息 , ()
+[2019-04-28 17:31:30.104206] INFO: jiekou: 全部kwargs参数信息 , {'asserqiwang': 'code=200', 'fanhuijson': {'code': 200, 'result': {'error': -1, 'data': '', 'msg': '未登录'}}}
+[2019-04-28 17:31:30.135406] INFO: jiekou: inputdata> 参数:{"token":"72bbdfd0b5bbb527"}, url:/cmsapi/third_anniversary/get_my_address ,返回:{'code': 200, 'result': {'error': -1, 'data': '', 'msg': '未登录'}},预期:code=200
+[2019-04-28 17:31:30.135406] INFO: jiekou: 当前模块 断言测试结果
+[2019-04-28 17:31:30.135406] INFO: jiekou: 全部args参数参数信息 , ()
+[2019-04-28 17:31:30.135406] INFO: jiekou: 全部kwargs参数信息 , {'asserqiwang': 'code=200', 'fanhuijson': {'code': 200, 'result': {'error': -1, 'data': '', 'msg': '未登录'}}}
